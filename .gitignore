@@ -1,0 +1,25 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# VS Code
+.vscode/
+
+# Angular
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# User files
+*.user
+*.suo
+
+# Publish
+publish/
+
+# Windows
+Thumbs.db
+Desktop.ini

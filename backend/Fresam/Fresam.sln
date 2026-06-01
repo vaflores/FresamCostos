@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37301.10 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fresam.API", "Fresam.API\Fresam.API.csproj", "{BA51F531-9091-4B04-A741-456ED5C5698E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA51F531-9091-4B04-A741-456ED5C5698E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA51F531-9091-4B04-A741-456ED5C5698E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA51F531-9091-4B04-A741-456ED5C5698E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA51F531-9091-4B04-A741-456ED5C5698E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54FBCC26-A35E-49ED-BE70-30F38FDE065C}
+	EndGlobalSection
+EndGlobal

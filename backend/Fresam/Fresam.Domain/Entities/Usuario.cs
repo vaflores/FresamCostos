@@ -12,6 +12,8 @@ public class Usuario : BaseEntity
 {
     public int UsuarioId { get; set; }
 
+    public int? EmpleadoId { get; set; }
+
     public string NombreUsuario { get; set; } = string.Empty;
 
     public string NombreCompleto { get; set; } = string.Empty;

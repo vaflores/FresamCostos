@@ -4,9 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fresam.Application.DTOs.Usuarios
+namespace Fresam.Application.DTOs.Usuarios;
+
+public class UsuarioDto
 {
-    internal class UsuarioDto
-    {
-    }
+    public int UsuarioId { get; set; }
+
+    public string NombreUsuario { get; set; } = string.Empty;
+
+    public string NombreCompleto { get; set; } = string.Empty;
+
+    public string Correo { get; set; } = string.Empty;
+
+    public bool Activo { get; set; }
 }

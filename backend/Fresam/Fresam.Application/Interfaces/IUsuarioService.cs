@@ -10,5 +10,5 @@ namespace Fresam.Application.Interfaces;
 
 public interface IUsuarioService
 {
-    List<UsuarioDto> ObtenerTodos();
+    Task<List<UsuarioDto>> ObtenerTodosAsync();
 }

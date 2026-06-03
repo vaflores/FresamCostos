@@ -14,9 +14,9 @@ public class UsuariosController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult ObtenerTodos()
+    public async Task<IActionResult> ObtenerTodos()
     {
-        var usuarios = _usuarioService.ObtenerTodos();
+        var usuarios = await _usuarioService.ObtenerTodosAsync();
         return Ok(usuarios);
     }
 }

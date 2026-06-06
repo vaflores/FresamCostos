@@ -1,13 +1,12 @@
-﻿using Fresam.Domain.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fresam.Domain.Entities;
+namespace Fresam.Application.DTOs.Modulos;
 
-public class Modulo : BaseEntity
+public class ModuloDto
 {
     public int ModuloId { get; set; }
 

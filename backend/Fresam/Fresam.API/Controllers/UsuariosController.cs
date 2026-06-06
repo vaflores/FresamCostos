@@ -8,6 +8,7 @@ namespace Fresam.API.Controllers;
 public class UsuariosController : ControllerBase
 {
     private readonly IUsuarioService _usuarioService;
+
     public UsuariosController(IUsuarioService usuarioService)
     {
         _usuarioService = usuarioService;

@@ -10,9 +10,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+//Services
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IModuloService, ModuloService>();
+builder.Services.AddScoped<IRolService, RolService>();
+builder.Services.AddScoped<IPermisoService, PermisoService>();
 
+//Repositories
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IModuloRepository, ModuloRepository>();
+builder.Services.AddScoped<IRolRepository, RolRepository>();
+builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
+
+//Dapper Context
 builder.Services.AddScoped<DapperContext>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

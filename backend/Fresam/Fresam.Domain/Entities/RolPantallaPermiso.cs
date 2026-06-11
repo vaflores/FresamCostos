@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Fresam.Domain.Entities;
 
-public class RolPermiso : BaseEntity
+public class RolPantallaPermiso : BaseEntity
 {
-    public int RolPermisoId { get; set; }
-
+    public int RolPantallaPermisoId {  get; set; }
     public int RolId { get; set; }
-
-    public int PermisoId { get; set; }
+    public int PantallaPermisoId { get; set; }
+    public bool Activo {  get; set; }
 }

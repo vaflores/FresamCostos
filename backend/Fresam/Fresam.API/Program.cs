@@ -16,6 +16,9 @@ builder.Services.AddScoped<IModuloService, ModuloService>();
 builder.Services.AddScoped<IRolService, RolService>();
 builder.Services.AddScoped<IPermisoService, PermisoService>();
 builder.Services.AddScoped<IPantallaService, PantallaService>();
+builder.Services.AddScoped<IUsuarioRolService, UsuarioRolService>();
+builder.Services.AddScoped<IPantallaPermisoService, PantallaPermisoService>();
+builder.Services.AddScoped<IRolPantallaPermisoService, RolPantallaPermisoService>();
 
 //Repositories
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -23,6 +26,9 @@ builder.Services.AddScoped<IModuloRepository, ModuloRepository>();
 builder.Services.AddScoped<IRolRepository, RolRepository>();
 builder.Services.AddScoped<IPermisoRepository, PermisoRepository>();
 builder.Services.AddScoped<IPantallaRepository, PantallaRepository>();
+builder.Services.AddScoped<IUsuarioRolRepository, UsuarioRolRepository>();
+builder.Services.AddScoped<IPantallaPermisoRepository, PantallaPermisoRepository>();
+builder.Services.AddScoped<IRolPantallaPermisoRepository, RolPantallaPermisoRepository>();
 
 //Dapper Context
 builder.Services.AddScoped<DapperContext>();

@@ -14,10 +14,8 @@ namespace Fresam.Infrastructure.Repositories;
 
 public class RolRepository : BaseRepository, IRolRepository
 {
-    private readonly DapperContext _context;
     public RolRepository(DapperContext context) : base(context)
     {
-        _context = context;
     }
     public async Task<List<Rol>> ObtenerTodosAsync()
     {

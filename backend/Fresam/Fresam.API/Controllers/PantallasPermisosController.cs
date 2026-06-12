@@ -1,7 +1,5 @@
 ﻿using Fresam.Application.DTOs.PantallasPermisos;
-using Fresam.Application.DTOs.UsuarioRol;
 using Fresam.Application.Interfaces;
-using Fresam.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fresam.API.Controllers;

@@ -19,6 +19,7 @@ builder.Services.AddScoped<IPantallaService, PantallaService>();
 builder.Services.AddScoped<IUsuarioRolService, UsuarioRolService>();
 builder.Services.AddScoped<IPantallaPermisoService, PantallaPermisoService>();
 builder.Services.AddScoped<IRolPantallaPermisoService, RolPantallaPermisoService>();
+builder.Services.AddScoped<IPerfilSeguridadUsuarioService, PerfilSeguridadUsuarioService>();
 
 //Repositories
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -29,6 +30,7 @@ builder.Services.AddScoped<IPantallaRepository, PantallaRepository>();
 builder.Services.AddScoped<IUsuarioRolRepository, UsuarioRolRepository>();
 builder.Services.AddScoped<IPantallaPermisoRepository, PantallaPermisoRepository>();
 builder.Services.AddScoped<IRolPantallaPermisoRepository, RolPantallaPermisoRepository>();
+builder.Services.AddScoped<IPerfilSeguridadUsuarioRepository, PerfilSeguridadUsuarioRepository>();
 
 //Dapper Context
 builder.Services.AddScoped<DapperContext>();

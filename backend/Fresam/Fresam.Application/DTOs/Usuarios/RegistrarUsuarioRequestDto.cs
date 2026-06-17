@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Fresam.Domain.Common;
+namespace Fresam.Application.DTOs.Usuarios;
 
-namespace Fresam.Domain.Entities;
-
-public class Usuario : BaseEntity
+public class RegistrarUsuarioRequestDto
 {
-    public int UsuarioId { get; set; }
-
     public int? EmpleadoId { get; set; }
 
     public string UsuarioNombre { get; set; } = string.Empty;
@@ -20,7 +16,5 @@ public class Usuario : BaseEntity
 
     public string Correo { get; set; } = string.Empty;
 
-    public string PasswordHash { get; set; } = string.Empty;
-
-    public bool Activo { get; set; }
+    public string Password { get; set; } = string.Empty;
 }

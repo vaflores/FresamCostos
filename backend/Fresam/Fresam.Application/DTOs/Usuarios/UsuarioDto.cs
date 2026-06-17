@@ -10,7 +10,7 @@ public class UsuarioDto
 {
     public int UsuarioId { get; set; }
 
-    public string NombreUsuario { get; set; } = string.Empty;
+    public string UsuarioNombre { get; set; } = string.Empty;
 
     public string NombreCompleto { get; set; } = string.Empty;
 

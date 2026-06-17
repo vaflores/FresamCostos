@@ -1,4 +1,4 @@
-﻿using Fresam.Application.Interfaces;
+﻿using Fresam.Application.Interfaces.Security;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fresam.API.Controllers;

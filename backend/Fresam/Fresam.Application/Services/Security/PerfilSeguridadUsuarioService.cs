@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fresam.Application.DTOs.Seguridad;
-using Fresam.Application.Interfaces.Repositories;
-using Fresam.Application.Interfaces;
 using System.Security.Cryptography.X509Certificates;
+using Fresam.Application.Interfaces.Repositories.Security;
+using Fresam.Application.Interfaces.Security;
 
-namespace Fresam.Application.Services;
+namespace Fresam.Application.Services.Security;
 
 public class PerfilSeguridadUsuarioService : IPerfilSeguridadUsuarioService
 {

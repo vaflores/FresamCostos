@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Fresam.Application.DTOs.UsuarioRol;
 using Fresam.Application.Interfaces;        
 using Fresam.Application.Interfaces.Repositories;
+using Fresam.Domain.Entities;
 
 namespace Fresam.Application.Services;
 
@@ -36,7 +37,7 @@ public class UsuarioRolService : IUsuarioRolService
 
         if (existe == null)
         {
-            var nuevoUsuarioRol = new Domain.Entities.UsuarioRol
+            var nuevoUsuarioRol = new UsuarioRol
             {
                 UsuarioId = dto.UsuarioId,
                 RolId = dto.RolId,

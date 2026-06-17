@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Fresam.Application.DTOs.Auth;
+using Fresam.Application.DTOs.Usuarios;
 using Fresam.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Fresam.API.Controllers;
 
@@ -19,5 +21,21 @@ public class UsuariosController : ControllerBase
     {
         var usuarios = await _usuarioService.ObtenerTodosAsync();
         return Ok(usuarios);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RegistrarUsuario([FromBody] RegistrarUsuarioRequestDto request)
+    {
+        var usuario = await _usuarioService.RegistrarUsuarioAsync(request);
+
+        return Ok(usuario); 
+    }
+
+    [HttpPatch("password")]
+    public async Task<IActionResult> ActualizarUsuarioPassword([FromBody] ActualizarUsuarioPasswordRequestDto request)
+    {
+        var usuario = await _usuarioService.ActualizarUsuarioPasswordAsync(request);
+
+        return Ok(usuario);
     }
 }

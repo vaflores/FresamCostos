@@ -26,7 +26,7 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
         var sql = @"
                 SELECT 
                     UsuarioId, 
-                    NombreUsuario, 
+                    UsuarioNombre, 
                     NombreCompleto, 
                     Correo, 
                     Activo 
@@ -35,5 +35,103 @@ public class UsuarioRepository : BaseRepository, IUsuarioRepository
         var usuarios = await connection.QueryAsync<Usuario>(sql);
 
         return usuarios.ToList();
+    }
+
+    public async Task<int> RegistrarUsuarioAsync(Usuario usuario)
+    {
+        using var connection = Context.CreateConnection();
+
+        var sql = @"
+            INSERT INTO Usuarios 
+            (
+                EmpleadoId, 
+                UsuarioNombre, 
+                NombreCompleto, 
+                Correo, 
+                PasswordHash, 
+                Activo, 
+                FechaCreacion, 
+                UsuarioCreacion
+            )
+            
+            VALUES 
+            (
+                @EmpleadoId, 
+                @UsuarioNombre, 
+                @NombreCompleto, 
+                @Correo, 
+                @PasswordHash,  
+                @Activo, 
+                @FechaCreacion, 
+                @UsuarioCreacion
+            );
+            
+            SELECT CAST(SCOPE_IDENTITY() as int)";
+
+        var usuarioId =
+            await connection.ExecuteScalarAsync<int>(sql, usuario);
+
+        return usuarioId;
+    }
+
+    public async Task<Usuario?> ObtenerUsuarioPorUsuarioNombreAsync(string usuarioNombre)
+    {
+        using var connection = Context.CreateConnection();
+        var sql = @"
+            SELECT 
+                UsuarioId,
+                EmpleadoId,
+                UsuarioNombre,
+                NombreCompleto,
+                Correo,
+                PasswordHash,
+                Activo,
+                FechaCreacion,
+                UsuarioCreacion,
+                FechaModificacion,
+                UsuarioModificacion
+            FROM Usuarios
+            WHERE UsuarioNombre = @UsuarioNombre";
+        var result = await connection.QuerySingleOrDefaultAsync<Usuario>(sql, new { UsuarioNombre = usuarioNombre });
+        return result;
+    }
+
+    public async Task<Usuario?> ObtenerUsuarioPorUsuarioIdAsync(int usuarioId)
+    {
+        using var connection = Context.CreateConnection();
+
+        var sql = @"
+            SELECT
+                UsuarioId,
+                UsuarioNombre,
+                NombreCompleto,
+                Correo,
+                PasswordHash,
+                Activo
+            FROM Usuarios
+            WHERE UsuarioId = @UsuarioId";
+
+        var usuario = await connection.QueryFirstOrDefaultAsync<Usuario>(
+            sql,
+            new
+            {
+                UsuarioId = usuarioId
+            });
+
+        return usuario;
+    }
+
+    public async Task<int> ActualizarUsuarioPasswordAsync(Usuario usuario)
+    {
+        using var connection = Context.CreateConnection();
+        var sql = @"
+            UPDATE Usuarios
+            SET 
+                PasswordHash = @PasswordHash,
+                FechaModificacion = @FechaModificacion,
+                UsuarioModificacion = @UsuarioModificacion
+            WHERE UsuarioId = @UsuarioId;";
+        var result = await connection.ExecuteAsync(sql, usuario);
+        return result;
     }
 }

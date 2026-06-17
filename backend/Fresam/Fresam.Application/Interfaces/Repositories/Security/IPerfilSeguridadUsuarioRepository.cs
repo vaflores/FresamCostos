@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Fresam.Application.DTOs.Seguridad;
 
-namespace Fresam.Application.Interfaces.Repositories;
+namespace Fresam.Application.Interfaces.Repositories.Security;
 
 public interface IPerfilSeguridadUsuarioRepository
 {

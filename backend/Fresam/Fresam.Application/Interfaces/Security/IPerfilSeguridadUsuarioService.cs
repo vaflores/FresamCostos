@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Fresam.Application.DTOs.Seguridad;
 
-namespace Fresam.Application.Interfaces;
+namespace Fresam.Application.Interfaces.Security;
 
 public interface IPerfilSeguridadUsuarioService
 {

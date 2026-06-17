@@ -3,6 +3,11 @@ using Fresam.Application.Services;
 using Fresam.Application.Interfaces.Repositories;
 using Fresam.Infrastructure.Repositories;
 using Fresam.Infrastructure.Data;
+using Fresam.Infrastructure.Security;
+using Fresam.Application.Configurations;
+using Fresam.Application.Services.Security;
+using Fresam.Application.Interfaces.Repositories.Security;
+using Fresam.Application.Interfaces.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +25,8 @@ builder.Services.AddScoped<IUsuarioRolService, UsuarioRolService>();
 builder.Services.AddScoped<IPantallaPermisoService, PantallaPermisoService>();
 builder.Services.AddScoped<IRolPantallaPermisoService, RolPantallaPermisoService>();
 builder.Services.AddScoped<IPerfilSeguridadUsuarioService, PerfilSeguridadUsuarioService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
 
 //Repositories
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -31,6 +38,10 @@ builder.Services.AddScoped<IUsuarioRolRepository, UsuarioRolRepository>();
 builder.Services.AddScoped<IPantallaPermisoRepository, PantallaPermisoRepository>();
 builder.Services.AddScoped<IRolPantallaPermisoRepository, RolPantallaPermisoRepository>();
 builder.Services.AddScoped<IPerfilSeguridadUsuarioRepository, PerfilSeguridadUsuarioRepository>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+
+//Configurations
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
 //Dapper Context
 builder.Services.AddScoped<DapperContext>();

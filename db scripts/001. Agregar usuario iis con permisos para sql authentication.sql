@@ -1,0 +1,17 @@
+USE master;
+GO
+
+CREATE LOGIN [IIS APPPOOL\FresamApiPool]
+FROM WINDOWS;
+GO
+
+USE FresamCostos;
+GO
+
+CREATE USER [IIS APPPOOL\FresamApiPool]
+FOR LOGIN [IIS APPPOOL\FresamApiPool];
+GO
+
+ALTER ROLE db_owner
+ADD MEMBER [IIS APPPOOL\FresamApiPool];
+GO

@@ -1,4 +1,5 @@
-﻿using Fresam.Application.DTOs.Auth;
+﻿using Fresam.API.Security;
+using Fresam.Application.DTOs.Auth;
 using Fresam.Application.DTOs.Usuarios;
 using Fresam.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,7 @@ public class UsuariosController : ControllerBase
         return Ok(usuarios);
     }
 
+    [RequirePermission("1.Crear")]
     [HttpPost]
     public async Task<IActionResult> RegistrarUsuario([FromBody] RegistrarUsuarioRequestDto request)
     {

@@ -1,4 +1,5 @@
 ﻿using Fresam.Application.DTOs.Auth;
+using Fresam.Application.DTOs.Seguridad;
 using Fresam.Application.Interfaces.Repositories.Security;
 using Fresam.Application.Interfaces.Security;
 using Fresam.Domain.Entities;
@@ -16,10 +17,15 @@ public class AuthService : IAuthService
     private readonly IAuthRepository _authRepository;
     private readonly IJwtService _jwtService;
     private readonly PasswordHasher<Usuario> _passwordHasher;
-    public AuthService(IAuthRepository authRepository, IJwtService jwtService)
+    private readonly IPerfilSeguridadUsuarioService _perfilSeguridadUsuarioService;
+    public AuthService(
+        IAuthRepository authRepository, 
+        IJwtService jwtService, 
+        IPerfilSeguridadUsuarioService perfilSeguridadUsuarioService)
     {
         _authRepository = authRepository;
         _jwtService = jwtService;
+        _perfilSeguridadUsuarioService = perfilSeguridadUsuarioService;
         _passwordHasher = new PasswordHasher<Usuario>();
     }
     
@@ -51,7 +57,9 @@ public class AuthService : IAuthService
                 "Usuario o contraseña incorrectos.");
         }
 
-        string token = _jwtService.GenerarToken(usuario);
+        var permisosJwt = await ObtenerPermisosJwtAsync(usuario);
+
+        string token = _jwtService.GenerarToken(usuario, permisosJwt);
 
         return new LoginResponseDto
         {
@@ -59,5 +67,25 @@ public class AuthService : IAuthService
             UsuarioNombre = usuario.UsuarioNombre,
             Token = token
         };
+    }
+
+    private async Task<List<string>> ObtenerPermisosJwtAsync(Usuario usuario)
+    {
+        var perfil = await _perfilSeguridadUsuarioService.ObtenerPerfilSeguridadUsuarioAsync(usuario.UsuarioId);
+
+        var permisosJwt = new List<string>();
+
+        foreach (var modulo in perfil.Modulos)
+            foreach (var pantalla in modulo.Pantallas)
+                foreach (var permiso in pantalla.Permisos)
+                {
+                    permisosJwt.Add($"{pantalla.PantallaId}.{permiso.Codigo}");
+                }
+
+        permisosJwt = permisosJwt
+            .Distinct()
+            .ToList();
+
+        return permisosJwt;
     }
 }

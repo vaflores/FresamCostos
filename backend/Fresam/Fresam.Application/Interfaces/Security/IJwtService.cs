@@ -9,5 +9,5 @@ namespace Fresam.Application.Interfaces.Security;
 
 public interface IJwtService
 {
-    string GenerarToken(Usuario usuario);
+    string GenerarToken(Usuario usuario, List<string> permisos);
 }

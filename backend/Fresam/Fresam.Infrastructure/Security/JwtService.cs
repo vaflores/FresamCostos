@@ -22,7 +22,7 @@ public class JwtService : IJwtService
         _jwtSettings = jwtSettings.Value;
     }
 
-    public string GenerarToken(Usuario usuario)
+    public string GenerarToken(Usuario usuario, List<string> permisos)
     {
         var claims = new List<Claim>
         {
@@ -34,6 +34,11 @@ public class JwtService : IJwtService
                 ClaimTypes.Name,
                 usuario.UsuarioNombre)
         };
+
+        foreach (var permiso in permisos)
+        {
+            claims.Add(new Claim("permission", permiso));
+        }
 
         var key = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(_jwtSettings.Key));
@@ -52,4 +57,5 @@ public class JwtService : IJwtService
         return new JwtSecurityTokenHandler()
             .WriteToken(token);
     }
+
 }

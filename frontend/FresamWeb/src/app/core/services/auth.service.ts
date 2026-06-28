@@ -11,16 +11,11 @@ import { LoginResponse } from '../models/auth/login-response.model';
 })
 export class AuthService {
 
-  private readonly http =
-    inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
-  private readonly apiUrl =
-    'http://localhost:5001/api/v1/Auth/login';
+  private readonly apiUrl = 'http://localhost:5001/api/v1/Auth/login';
 
-  login(
-    request: LoginRequest
-  ): Observable<LoginResponse> {
-
+  login( request: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(
       this.apiUrl,
       request);

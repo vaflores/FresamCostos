@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-header>
+        <mat-icon mat-card-avatar>
+            dashboard
+        </mat-icon>
+        <mat-card-title>
+            Sistema Integral de Costos Fresam
+        </mat-card-title>
+        <mat-card-subtitle>
+            @if (perfil(); as perfil){
+                <span>Bienvenido, {{perfil.usuarioNombre}}</span>
+            }
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <p>
+            Fecha:
+            <strong>{{hoy | date: 'dd/MM/yyyy' }}</strong>
+        </p>
+    </mat-card-content>
+</mat-card>

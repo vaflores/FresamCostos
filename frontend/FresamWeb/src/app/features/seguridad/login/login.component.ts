@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router} from '@angular/router'
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +13,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { LoginResponse} from '../../../core/models/auth/login-response.model'
 import { AuthService } from '../../../core/services/auth.service';
+import { TokenService } from '../../../core/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +35,8 @@ import { AuthService } from '../../../core/services/auth.service';
 export class LoginComponent {
   private readonly authService = inject(AuthService);
   private readonly fb = inject(FormBuilder);
+  private readonly ts = inject(TokenService);
+  private readonly router = inject(Router);
 
   loginForm: FormGroup = this.fb.group({
     usuario: [
@@ -65,9 +69,11 @@ export class LoginComponent {
 
         this.isLoading = false;
 
-        alert('Login exitoso');
+        this.ts.setToken(response.token);
 
-        console.log(response);
+        this.router.navigate(['/dashboard']);
+
+        //console.log(response);
 
       },
       error: (error: HttpErrorResponse) => {

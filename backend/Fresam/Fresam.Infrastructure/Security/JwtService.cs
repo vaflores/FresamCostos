@@ -27,11 +27,11 @@ public class JwtService : IJwtService
         var claims = new List<Claim>
         {
             new Claim(
-                ClaimTypes.NameIdentifier,
+                JwtRegisteredClaimNames.Sub,
                 usuario.UsuarioId.ToString()),
 
             new Claim(
-                ClaimTypes.Name,
+                JwtRegisteredClaimNames.UniqueName,
                 usuario.UsuarioNombre)
         };
 

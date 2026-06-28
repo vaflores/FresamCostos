@@ -20,7 +20,7 @@ public class PerfilSeguridadController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ObtenerPerfil()
     {
-        var usuarioIdClaim = User.FindFirst( ClaimTypes.NameIdentifier);
+        var usuarioIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
 
         if (usuarioIdClaim == null)
         {

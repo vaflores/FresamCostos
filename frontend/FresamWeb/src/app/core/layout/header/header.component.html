@@ -3,11 +3,13 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span class="title">SICF</span> 
+  <!--
   <span class="spacer"></span>
   @if (perfil(); as perfil) {
     <span class="user-name">Usuario: {{ perfil.usuarioNombre }}
     </span>
   }
+  -->
   <span class="spacer"></span>
-  <button mat-button (click)="logout()">Salir</button>
+  <button mat-button id="logout-button" (click)="logout()">Salir</button>
 </mat-toolbar>
